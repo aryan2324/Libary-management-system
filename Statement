@@ -3,7 +3,6 @@ The main aim of this project is to build a command-line library system in Python
 It can store books, register students, issue and return books, and calculate late fees on its own.
 The project also gave me a chance to use the basic Python topics we studied in class, such as functions, loops, lists, dictionaries and importing code from other files.
 
-
 Problem Statement Manual handling of library records creates a few problems for institutions:
 • It is hard to keep track of stock when many students borrow and return books. 
 • A book may be issued to someone who is not registered, or when no copy is left. 
@@ -12,8 +11,7 @@ Problem Statement Manual handling of library records creates a few problems for 
 Without an automated system, record keeping takes long, is full of errors, and is difficult to verify later.
 
 
-
-Functional Requirements 
+#Functional Requirements 
 The program has four main modules, and all of them are used through an 8-option menu that keeps running until the user chooses to exit. 
 
 
@@ -51,7 +49,8 @@ Output- Success messages, stock warnings, fine amount (in Rs.) and the list of i
 Purpose -Handles the whole borrow-return cycle and the overdue rule
 
 
-Non-Functional Requirements • Usability: A simple 8-option menu with direct prompts for input.
+#Non-Functional Requirements
+• Usability: A simple 8-option menu with direct prompts for input.
 • Maintainability: The code is divided into 5 files (storage.py, books.py, users.py, borrow_service.py, main.py) so each file has its own job. 
 • Reliability: It stops wrong operations such as issuing an out-of-stock book, issuing to a student who doesn't exist, issuing the same book twice, or returning a book twice.
 • Error handling: .isdigit() is used to check numeric inputs (menu choice, quantity, days kept), and .strip().lower() is used to clean IDs before comparing them.
