@@ -1,0 +1,58 @@
+Purpose of the Project 
+The main aim of this project is to build a command-line library system in Python. 
+It can store books, register students, issue and return books, and calculate late fees on its own.
+The project also gave me a chance to use the basic Python topics we studied in class, such as functions, loops, lists, dictionaries and importing code from other files.
+
+
+Problem Statement Manual handling of library records creates a few problems for institutions:
+• It is hard to keep track of stock when many students borrow and return books. 
+• A book may be issued to someone who is not registered, or when no copy is left. 
+• The same student can end up borrowing the same book twice. 
+• Late fees are often calculated wrongly because the number of days is counted by hand.
+Without an automated system, record keeping takes long, is full of errors, and is difficult to verify later.
+
+
+
+Functional Requirements 
+The program has four main modules, and all of them are used through an 8-option menu that keeps running until the user chooses to exit. 
+
+
+Module 1: Storage and Data Initialization (storage.py)
+Structures-books, users, issued_records
+Input -Pre-filled data, or new dictionaries added while the program runs
+Processing-Keeps global lists of dictionaries for books, registered users and active loans
+Output-Data stored in memory while the program is running
+Purpose-Keeps all the shared data of the application in one place
+
+
+Module 2: Book Catalog Management (books.py)
+Functions- list_all_books(), find_book_by_id(book_id), add_new_book(book_id, title, author, quantity)
+Input- Book ID, title, author and quantity
+Processing- Goes through the books using while loops, checks the ID (spaces are removed and case is ignored in main.py), and adds a new book dictionary
+Output- List of books with their stock, or a success/error message
+Purpose- Manages the library inventory
+
+
+Module 3: User Management (users.py)
+Functions- find_user_by_id(user_id), register_student(user_id, name), list_all_students()
+Input- Student ID and student name
+Processing -Checks if the ID already exists, then adds a new student dictionary with "role": "student"
+Output-List of registered students, or an error message
+Purpose -Keeps the student profiles
+
+
+Module 4: Borrow, Return and Fine Management (borrow_service.py)
+Functions- issue_book(student_id, book_id, days), calculate_fine(days_issued), return_book(student_id, book_id), list_issued_books()
+Input -Student ID, book ID and days kept (integer)
+Issue- Checks that the student and the book exist, that stock is more than 0, and that the student doesn't already have the same book. Then it reduces the quantity by 1 and saves the loan.
+Fine- If days_issued > 14, fine = (days_issued - 14) x 5, otherwise 0
+Return -Finds the loan record, calculates the fine, increases the book quantity by 1 and removes the record
+Output- Success messages, stock warnings, fine amount (in Rs.) and the list of issued books
+Purpose -Handles the whole borrow-return cycle and the overdue rule
+
+
+Non-Functional Requirements • Usability: A simple 8-option menu with direct prompts for input.
+• Maintainability: The code is divided into 5 files (storage.py, books.py, users.py, borrow_service.py, main.py) so each file has its own job. 
+• Reliability: It stops wrong operations such as issuing an out-of-stock book, issuing to a student who doesn't exist, issuing the same book twice, or returning a book twice.
+• Error handling: .isdigit() is used to check numeric inputs (menu choice, quantity, days kept), and .strip().lower() is used to clean IDs before comparing them.
+• Performance: It is very light because it only uses basic Python lists and dictionaries.
